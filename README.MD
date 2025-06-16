@@ -1,5 +1,30 @@
 # Configurando projeto
 
+    PROJETO/  
+    │   
+    └── Desafio/  <-- Backend Api
+    │     └──Desafio/
+    │         ├── controllers/
+    │         ├── dtos/
+    │         ├── interfaces/
+    │         ├── mapping/ <-- mapeamento com automapper
+    │         ├── migrations/
+    │         ├── models/ <-- modelagem das entidades
+    │         ├── services/
+    │         ├── validators/ <-- validators com fluentvalidators
+    │         └── Dockerfile
+    ├── my-app/   <-- Frontend
+    │     └── src/
+    │         ├── components/ <-- Todos os modais, formulários e tabelas
+    │         └── interfaces/
+    │         │    ├── Aluno/
+    │         │    ├── Matricula/
+    │         │    └── Curso/
+    │         ├── pages/
+    │         └── services/ <- conexão com api
+    ├── Dockerfile   
+    └──  
+
 - Tenha instalado Docker Desktop e docker compose na máquina.
 - execute o comando no mesmo nível do docker-compose.yaml: `docker compose up --build`
 - A aplicação estará rodando: `http://localhost:3000/`
