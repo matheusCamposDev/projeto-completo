@@ -1,7 +1,7 @@
 # Configurando projeto
 
 - Tenha instalado Docker Desktop e docker compose na máquina.
-- execute o comando: `docker compose up --build`
+- execute o comando no mesmo nível do docker-compose.yaml: `docker compose up --build`
 - A aplicação estará rodando: `http://localhost:3000/`
 
 # Sobre o projeto
@@ -52,4 +52,76 @@
 - Lista apenas os alunos que possuem matrículas
 - Filtro de nomes busca aluno quem vem direto da base de dados
 
-<img src="prints/matriculados.png" alt="Tela Inicial" width="600"/>
+<img src="prints/matriculados.png" alt="Tela Inicial" width="600"/>  
+
+<br>
+
+# Tecnologias e bibliotecas
+
+- Docker
+- React
+- Git
+- TypeScript
+- MySQL
+- Entity Framework core
+- asp.net core 8
+- FluentValidation
+- Automapper
+- Tailwind
+
+<br>
+
+# Entidades e relacionamentos
+
+### Entidade Aluno  
+- Tabela: Alunos  
+- Chave primária: Id
+
+- Propriedades:
+
+    - Name: obrigatório, máximo 100 caracteres.
+
+    - Email: obrigatório, máximo 100 caracteres.
+
+    - DataNascimento: obrigatório.
+
+- Relacionamentos:
+
+    - Um aluno pode possuir várias matrículas (HasMany).
+
+<br> 
+
+### Entidade Curso
+- Tabela: Cursos
+- Chave primária: Id
+- Propriedades:
+    - Name: obrigatório, máximo 100 caracteres.
+    - Description: obrigatório, máximo 100 caracteres.
+- Relacionamentos:
+    - Um curso pode ter várias matrículas associadas.
+
+<br>
+
+### Entidade Matricula
+- Tabela intermediária (não nomeada explicitamente).
+- Propriedades:
+    - AlunoId: chave estrangeira para Aluno.
+    - CursoId: chave estrangeira para Curso.
+- Relacionamentos Aluno → Matrícula
+    - Um aluno pode ter várias matrículas.
+    - Restrição: DeleteBehavior.Restrict
+        - Impede a exclusão de um aluno caso existam matrículas associadas.
+
+- Curso → Matrícula
+    - Um curso pode ter várias matrículas.
+    - Restrição: DeleteBehavior.Cascade
+        - Ao excluir um curso, todas as matrículas associadas a ele também serão excluídas automaticamente.
+
+<br>
+
+### Regras e Comportamentos Importantes
+- Os dados exigem preenchimento obrigatório para campos essenciais (Name, Email, DataNascimento, Description).
+
+- O comportamento Restrict evita perda de integridade ao tentar deletar alunos com vínculos.
+
+- O comportamento Cascade permite limpeza automática de matrículas ao remover cursos.
