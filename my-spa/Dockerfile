@@ -7,9 +7,6 @@ RUN npm install
 
 COPY . .
 
-ARG VITE_API__MATRICULAS_URL
-ENV VITE_API__MATRICULAS_URL=$VITE_API__MATRICULAS_URL
-
 RUN npm run build
 
 FROM nginx:alpine

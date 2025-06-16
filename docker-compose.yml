@@ -34,8 +34,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:80"
-    environment:
-      - VITE_API__MATRICULAS_URL=http://localhost:8080/api/matriculas
     depends_on:
       - backend
 
